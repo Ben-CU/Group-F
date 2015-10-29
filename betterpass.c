@@ -6,27 +6,26 @@ int main()
   char UserInput[7];
   printf ("Please enter the password: ");
   fgets(UserInput, 7, stdin);
-  long PassKey = 965848625040;
+  long PassKey = 1946252954870;
   int InputLength = strlen(UserInput);
   int NumberArray[InputLength];
   int Counter;
   long UsersFirstKey = 1;
-  int UsersSecondKey = 0;
-  char SecretStuff[] = "ucjamkcxrmxrfcxqcapcrxkylgdcqrmxbmlrxqfmuxrmxmrfcpq";
+  char SecretStuff[] = "tDKBNLDySNySGDyRDBQDSyLzMHEDRSNyxykDUDQyRGNVySNyNSGDQRy";
   for (Counter = 0; Counter < InputLength; Counter++)
   {
     NumberArray[Counter] = UserInput[Counter];
-    UsersFirstKey = UsersFirstKey * NumberArray[Counter];
-    UsersSecondKey = UsersSecondKey + NumberArray[Counter];
+    UsersFirstKey = UsersFirstKey * NumberArray[Counter] + NumberArray[Counter];
   }
-  if (UsersSecondKey > 25)
+  long UsersSecondKey = UsersFirstKey;
+  while (UsersSecondKey > 53)
   {
-    UsersSecondKey = UsersSecondKey / 25;
+    UsersSecondKey = UsersSecondKey % 53;
   }
   if (PassKey == UsersFirstKey)
   {
-    char CharList[] = " abcdefghijklmnopqrstuvwxyz";
-    char DecodedSecretStuff[strlen(SecretStuff)];
+    char CharList[] = " abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-)";
+    char DecodedSecretStuff[strlen(SecretStuff)]; 
     for (Counter = 0; Counter < strlen(SecretStuff); Counter++)
     {
       int CurrentPosition = 0;
@@ -48,7 +47,7 @@ int main()
   }
   else
   {
-    printf ("Sorry that Password is incorrect, stay away.");
+    printf ("Sorry that Password is incorrect, stay away.\n");
   }
 return 0;
 }
